@@ -1,12 +1,132 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Focus Dashboard</title>
+  <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
-    <h1>Hello, World!</h1
-        p>This is a sample HTML document.</p>
+
+  <!-- ── TOP BAR ───────────────────────────────────── -->
+  <div class="top-bar">
+    <label class="dark-toggle" title="Toggle Dark Mode">
+      <span id="dark-toggle-label">🌙 Dark Mode</span>
+      <span class="toggle-switch">
+        <input type="checkbox" id="dark-toggle-input" />
+        <span class="toggle-slider"></span>
+      </span>
+    </label>
+  </div>
+
+  <!-- ── DASHBOARD GRID ────────────────────────────── -->
+  <main class="dashboard">
+
+    <!-- GREETING CARD -->
+    <div class="card greeting-card">
+      <div class="clock" id="clock">00:00:00</div>
+      <div class="date-str" id="date-str">Loading…</div>
+      <div class="greeting-text" id="greeting-text">Hello!</div>
+
+      <!-- Challenge: Custom Name -->
+      <div class="greeting-name-form">
+        <input
+          type="text"
+          id="name-input"
+          placeholder="Enter your name…"
+          maxlength="30"
+        />
+        <button class="btn-sm" id="name-save-btn">Save</button>
+      </div>
+    </div>
+
+    <!-- ROW: Focus Timer + Tasks -->
+    <div class="row">
+
+      <!-- FOCUS TIMER CARD -->
+      <div class="card timer-card">
+        <h2>⏱ Focus Timer</h2>
+        <div class="timer-display" id="timer-display">25:00</div>
+        <div class="timer-label" id="timer-label">Press Start to begin</div>
+
+        <div class="timer-controls">
+          <button class="btn-primary" id="timer-start">Start</button>
+          <button class="btn-secondary" id="timer-stop">Stop</button>
+          <button class="btn-secondary" id="timer-reset">Reset</button>
+        </div>
+
+        <!-- Challenge: Change Pomodoro Time -->
+        <div class="timer-custom">
+          <label for="custom-minutes">Set minutes:</label>
+          <input
+            type="number"
+            id="custom-minutes"
+            min="1"
+            max="120"
+            value="25"
+          />
+        </div>
+      </div>
+
+      <!-- TASKS CARD -->
+      <div class="card tasks-card">
+        <h2>✅ Tasks</h2>
+
+        <div class="task-input-row">
+          <input
+            type="text"
+            id="task-input"
+            placeholder="Add a new task…"
+            maxlength="120"
+          />
+          <button class="btn-primary" id="add-task-btn">Add</button>
+        </div>
+
+        <!-- Challenge: Sort Tasks -->
+        <div class="task-sort">
+          <label for="sort-select">Sort:</label>
+          <select id="sort-select">
+            <option value="default">Default</option>
+            <option value="az">A → Z</option>
+            <option value="za">Z → A</option>
+            <option value="undone">Undone first</option>
+            <option value="done">Done first</option>
+          </select>
+        </div>
+
+        <ul class="task-list" id="task-list"></ul>
+      </div>
+
+    </div><!-- /row -->
+
+    <!-- QUICK LINKS CARD -->
+    <div class="card links-card">
+      <h2>🔗 Quick Links</h2>
+
+      <div class="link-input-row">
+        <input
+          type="text"
+          id="link-name-input"
+          placeholder="Link name"
+          maxlength="30"
+        />
+        <input
+          type="text"
+          id="link-url-input"
+          placeholder="URL (e.g. google.com)"
+          maxlength="200"
+        />
+        <button class="btn-primary" id="add-link-btn">Add Link</button>
+      </div>
+
+      <div class="link-tags" id="link-tags"></div>
+    </div>
+
+  </main>
+
+  <!-- Toast notification -->
+  <div id="toast"></div>
+
+  <script src="js/app.js"></script>
 </body>
 </html>
